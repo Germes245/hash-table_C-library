@@ -1,0 +1,1 @@
+uint hash_func(unsigned char* text);

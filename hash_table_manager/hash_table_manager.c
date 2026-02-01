@@ -1,0 +1,64 @@
+#include <stdlib.h>
+#include <stddef.h>
+#include "../dict_chain_library/dict_chain.h"
+#include "../hash/hash.h"
+
+#define index_of_key_in_hash(key, length) hash_func(key)%length
+
+typedef struct{
+    dict_chain *array;
+    size_t length;
+} dict;
+
+dict dict_init(size_t length){
+    dict hash_table;
+    hash_table.length = length;
+    size_t size = length*sizeof(dict_chain);
+    hash_table.array = malloc(size);
+    for(size_t i = 0; i < length; i++){
+        hash_table.array[i] = dict_chain_init();
+    }
+    return hash_table;
+}
+
+void dict_put(dict hash_table, char key[], char value[]){
+    uint index = index_of_key_in_hash(key, hash_table.length);
+    dict_chain_put(&hash_table.array[index], key, value);
+    //exit(1);
+}
+
+char* dict_get(dict hash_table, char key[]){
+    uint index = index_of_key_in_hash(key, hash_table.length);
+    return dict_chain_get(hash_table.array[index], key);
+}
+
+void dict_delete(dict *hash_table, char key[]){
+    uint index = index_of_key_in_hash(key, hash_table->length);
+    dict_chain_delete(&hash_table->array[index], key);
+}
+
+void dict_free(dict *hash_table){
+    for(size_t i = 0; i < hash_table->length; i++){
+        dict_chain_free(&hash_table->array[i]);
+    }
+    free(hash_table->array);
+    hash_table->array = 0;
+    hash_table->length = 0;
+}
+
+/*int main(){
+    dict hash_table = dict_init(5);
+    dict_put(hash_table, "basa", "aaa");
+    for(uint j = 0; j < 5; j++){
+        print_dict_chain(hash_table.array[j]);
+        putchar('\n');
+    }
+    printf(dict_get(hash_table, "basa"));
+    dict_delete(&hash_table, "basa");
+    for(uint j = 0; j < 5; j++){
+        print_dict_chain(hash_table.array[j]);
+        putchar('\n');
+    }
+    dict_free(&hash_table);
+    return 0;
+}*/
