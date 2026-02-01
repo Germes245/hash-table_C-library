@@ -1,1 +1,0 @@
-gcc -c dict_couple_library/
