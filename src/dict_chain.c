@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-//#include <unistd.h>
 #include "../dict_couple_library/dict_couple.h"
 
 #define print_dict_chain(chain) {\
@@ -58,16 +57,13 @@ void dict_chain_put(dict_chain *chain, char key[], char value[]){
             chain->array = realloc(chain->array, (++chain->length)*sizeof(dict_chain));
             create_and_copy(chain->array[chain->length-1].key, key);
             create_and_copy(chain->array[chain->length-1].value, value);
-            //chain->array[chain->length-1] = couple;
         }
-        //chain->array = realloc((++chain->length)*sizeof(dict_chain));
     }
     else{
         chain->array = malloc(sizeof(dict_couple));
         chain->length = 1;
         create_and_copy(chain->array[0].key, key);
         create_and_copy(chain->array[0].value, value);
-        //chain->array[0] = couple;
     }
 }
 
@@ -90,21 +86,3 @@ void dict_chain_free(dict_chain *chain){
         dict_couple_free(&chain->array[i]);
     }
 }
-
-/*int main(){
-    dict_chain chain = dict_chain_init();
-    dict_chain_put(&chain, "ha","sa");
-    dict_chain_put(&chain, "sa","sa");
-    dict_chain_put(&chain, "fafa","sa");
-    //printf("%s %s\n", chain.array[0].key, chain.array[0].value);
-    //printf("%d", dict_chain_has_couple_with_key(&chain, "sa"));
-    //printf("%d", dict_chain_has_couple_with_key(&chain, "ha"));
-    //dict_chain_put(&chain, dict_couple_init("sa","ha"));
-    //printf(dict_chain_get(chain, "ha"));
-    print_dict_chain(chain)
-    putchar('\n');
-    dict_chain_delete(&chain, "fafa");
-    print_dict_chain(chain)
-    putchar('\n');
-    return 0;
-}*/

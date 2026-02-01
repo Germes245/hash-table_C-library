@@ -45,20 +45,3 @@ void dict_free(dict *hash_table){
     hash_table->array = 0;
     hash_table->length = 0;
 }
-
-/*int main(){
-    dict hash_table = dict_init(5);
-    dict_put(hash_table, "basa", "aaa");
-    for(uint j = 0; j < 5; j++){
-        print_dict_chain(hash_table.array[j]);
-        putchar('\n');
-    }
-    printf(dict_get(hash_table, "basa"));
-    dict_delete(&hash_table, "basa");
-    for(uint j = 0; j < 5; j++){
-        print_dict_chain(hash_table.array[j]);
-        putchar('\n');
-    }
-    dict_free(&hash_table);
-    return 0;
-}*/

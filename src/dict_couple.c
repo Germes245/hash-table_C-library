@@ -21,13 +21,3 @@ void dict_couple_free(dict_couple *couple){
     couple->key = 0;
     couple->value = 0;
 }
-
-/*int main(){
-    dict_couple couple = dict_couple_init("abs", "ABC");
-    printf("%s %s\n", couple.key, couple.value);
-    dict_couple_change_value(couple, "fafasa");
-    printf("%s %s\n", couple.key, couple.value);
-    dict_couple_delete(&couple);
-    printf("%ld",couple.key);
-    return 0;
-}*/
