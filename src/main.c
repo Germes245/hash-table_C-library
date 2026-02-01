@@ -1,4 +1,4 @@
-#include "hash_table_manager/hash_table_manager.h"
+#include "../include/hash_table_manager.h"
 #include <stdio.h>
 
 int main(){

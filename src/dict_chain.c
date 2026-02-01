@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../dict_couple_library/dict_couple.h"
+#include "../include/dict_couple.h"
 
 #define print_dict_chain(chain) {\
     printf("length: %ld. elements: ", chain.length);\

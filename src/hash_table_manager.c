@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stddef.h>
-#include "../dict_chain_library/dict_chain.h"
-#include "../hash/hash.h"
+#include "../include/dict_chain.h"
+#include "../include/hash.h"
 
 #define index_of_key_in_hash(key, length) hash_func(key)%length
 
