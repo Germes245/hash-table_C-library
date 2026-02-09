@@ -10,12 +10,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 # Добавляем библиотеку (объектные файлы создадутся автоматически)
 file(GLOB SOURCE_FILES "src/*.c")
-add_library(hash_table_objects OBJECT
-    src/dict_chain.c
-    src/dict_couple.c
-    src/hash.c
-    src/hash_table_manager.c
-)
+add_library(hash_table_objects OBJECT ${SOURCE_FILES})
 
 # Если нужен исполняемый файл
 #add_executable(main src/main.c)
