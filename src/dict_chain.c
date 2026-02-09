@@ -85,4 +85,6 @@ void dict_chain_free(dict_chain *chain){
     for(size_t i = 0; i < chain->length; i++){
         dict_couple_free(&chain->array[i]);
     }
+    free(chain->array);
+    chain->length = 0;
 }
