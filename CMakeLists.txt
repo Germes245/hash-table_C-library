@@ -9,7 +9,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 # Добавляем библиотеку (объектные файлы создадутся автоматически)
-#file(GLOB SOURCE_FILES "src/*.c")
+file(GLOB SOURCE_FILES "src/*.c")
 add_library(hash_table_objects OBJECT
     src/dict_chain.c
     src/dict_couple.c
