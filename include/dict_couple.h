@@ -5,4 +5,3 @@ typedef struct{
 
 dict_couple dict_couple_init(int key, int value);
 void dict_couple_change_value(dict_couple couple, int value[]);
-void dict_couple_free(dict_couple *couple);
