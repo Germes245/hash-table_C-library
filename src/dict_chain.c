@@ -15,19 +15,9 @@ typedef struct{
     size_t length;
 } dict_chain;
 
-static unsigned char strcmp_(char first[], char second[]){ // если строки равны, то 1, иначе 0
-    while(*first != 0 || *second != 0){
-        if(*first != *second) return 0;
-        first++;
-        second++;
-    }
-    if(*first == *second) return 1;
-    return 0;
-}
-
-static int dict_chain_has_couple_with_key(dict_chain *chain, char key[]){ //если есть, то индекс структуры, иначе -1
+static int dict_chain_has_couple_with_key(dict_chain *chain, int key){ //если есть, то индекс структуры, иначе -1
     for(size_t i = 0; i < chain->length; i++){
-        if(strcmp_(chain->array[i].key,key)) return i;
+        if(chain->array[i].key == key) return i;
     }
     return -1;
 }
@@ -66,7 +56,7 @@ void dict_chain_put(dict_chain *chain, int key, int value){
     }
 }
 
-char *dict_chain_get(dict_chain chain, char key[]){
+int *dict_chain_get(dict_chain chain, int key){
     int index = dict_chain_has_couple_with_key(&chain, key);
     if(index == -1) return 0;
     return chain.array[index].value;
