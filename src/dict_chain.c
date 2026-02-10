@@ -73,7 +73,7 @@ char *dict_chain_get(dict_chain chain, char key[]){
     return chain.array[index].value;
 }
 
-unsigned char dict_chain_delete(dict_chain *chain, char key[]){
+void dict_chain_delete(dict_chain *chain, char key[]){
     int index = dict_chain_has_couple_with_key(chain, key);
     if(index == -1) return 0;
     dict_couple_free(&chain->array[index]);
