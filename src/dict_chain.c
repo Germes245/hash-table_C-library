@@ -46,7 +46,7 @@ dict_chain dict_chain_init(){
     return chain;
 }
 
-void dict_chain_put(dict_chain *chain, char key[], char value[]){
+void dict_chain_put(dict_chain *chain, TYPE_FOR_DICT key, TYPE_FOR_DICT value){
     if(chain->length){
         int index;
         if((index = dict_chain_has_couple_with_key(chain, key)) != -1){
@@ -67,13 +67,13 @@ void dict_chain_put(dict_chain *chain, char key[], char value[]){
     }
 }
 
-char *dict_chain_get(dict_chain chain, char key[]){
+TYPE_FOR_DICT dict_chain_get(dict_chain chain, TYPE_FOR_DICT key){
     int index = dict_chain_has_couple_with_key(&chain, key);
     if(index == -1) return 0;
     return chain.array[index].value;
 }
 
-void dict_chain_delete(dict_chain *chain, char key[]){
+void dict_chain_delete(dict_chain *chain, TYPE_FOR_DICT key){
     int index = dict_chain_has_couple_with_key(chain, key);
     if(index == -1) return 0;
     dict_couple_free(&chain->array[index]);

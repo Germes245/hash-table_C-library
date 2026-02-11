@@ -21,18 +21,18 @@ dict dict_init(size_t length){
     return hash_table;
 }
 
-void dict_put(dict hash_table, char key[], char value[]){
+void dict_put(dict hash_table, TYPE_FOR_DICT key, TYPE_FOR_DICT value){
     uint index = index_of_key_in_hash(key, hash_table.length);
     dict_chain_put(&hash_table.array[index], key, value);
     //exit(1);
 }
 
-char* dict_get(dict hash_table, char key[]){
+TYPE_FOR_DICT dict_get(dict hash_table, TYPE_FOR_DICT key){
     uint index = index_of_key_in_hash(key, hash_table.length);
     return dict_chain_get(hash_table.array[index], key);
 }
 
-void dict_delete(dict *hash_table, char key[]){
+void dict_delete(dict *hash_table, TYPE_FOR_DICT key){
     uint index = index_of_key_in_hash(key, hash_table->length);
     dict_chain_delete(&hash_table->array[index], key);
 }

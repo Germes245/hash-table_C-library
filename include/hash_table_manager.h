@@ -1,15 +1,9 @@
+#include "config.h"
 #include <stddef.h>
 
-#define print_dict_chain(chain) {\
-    printf("length: %ld. elements: ", chain.length);\
-    for (size_t i = 0; i < chain.length; i++){\
-        printf("(%s, %s), ", chain.array[i].key, chain.array[i].value);\
-    }\
-}
-
 typedef struct{
-    char *key;
-    char *value;
+    TYPE_FOR_DICT key;
+    TYPE_FOR_DICT value;
 } dict_couple;
 
 typedef struct{
@@ -23,7 +17,7 @@ typedef struct{
 } dict;
 
 dict dict_init(size_t length);
-void dict_put(dict hash_table, char key[], char value[]);
-char* dict_get(dict hash_table, char key[]);
-void dict_delete(dict *hash_table, char key[]);
+void dict_put(dict hash_table, TYPE_FOR_DICT key, TYPE_FOR_DICT value);
+TYPE_FOR_DICT dict_get(dict hash_table, TYPE_FOR_DICT key);
+void dict_delete(dict *hash_table, TYPE_FOR_DICT key);
 void dict_free(dict *hash_table);
