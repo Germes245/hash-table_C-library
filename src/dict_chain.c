@@ -15,6 +15,8 @@ typedef struct{
     size_t length;
 } dict_chain;
 
+#if TYPE_FOR_DICT == TYPE_CHAR_P
+
 static unsigned char strcmp_(char first[], char second[]){ // если строки равны, то 1, иначе 0
     while(*first != 0 || *second != 0){
         if(*first != *second) return 0;
@@ -39,6 +41,8 @@ static void dict_chain_shift_left(dict_chain *chain, size_t index){
     }
 }
 
+#endif
+
 dict_chain dict_chain_init(){
     dict_chain chain;
     chain.array = 0;
@@ -46,7 +50,7 @@ dict_chain dict_chain_init(){
     return chain;
 }
 
-void dict_chain_put(dict_chain *chain, TYPE_FOR_DICT key, TYPE_FOR_DICT value){
+void dict_chain_put(dict_chain *chain, dict_value_t key, dict_value_t value){
     if(chain->length){
         int index;
         if((index = dict_chain_has_couple_with_key(chain, key)) != -1){
@@ -67,13 +71,13 @@ void dict_chain_put(dict_chain *chain, TYPE_FOR_DICT key, TYPE_FOR_DICT value){
     }
 }
 
-TYPE_FOR_DICT dict_chain_get(dict_chain chain, TYPE_FOR_DICT key){
+dict_value_t dict_chain_get(dict_chain chain, dict_value_t key){
     int index = dict_chain_has_couple_with_key(&chain, key);
     if(index == -1) return 0;
     return chain.array[index].value;
 }
 
-void dict_chain_delete(dict_chain *chain, TYPE_FOR_DICT key){
+void dict_chain_delete(dict_chain *chain, dict_value_t key){
     int index = dict_chain_has_couple_with_key(chain, key);
     if(index == -1) return 0;
     dict_couple_free(&chain->array[index]);
