@@ -1,9 +1,14 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include "../include/dict_chain.h"
-#include "../include/hash.h"
+#include "../include/config.h"
 
-#define index_of_key_in_hash(key, length) hash_func(key)%length
+#if TYPE_FOR_DICT == TYPE_CHAR_P
+    #include "../include/hash.h"
+    #define index_of_key_in_hash(key, length) hash_func(key)%length
+#elif TYPE_FOR_DICT == TYPE_INT
+    #define index_of_key_in_hash(key, length) key%length
+#endif
 
 typedef struct{
     dict_chain *array;

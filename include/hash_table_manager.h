@@ -2,8 +2,8 @@
 #include <stddef.h>
 
 typedef struct{
-    TYPE_FOR_DICT key;
-    TYPE_FOR_DICT value;
+    dict_value_t key;
+    dict_value_t value;
 } dict_couple;
 
 typedef struct{
@@ -17,7 +17,7 @@ typedef struct{
 } dict;
 
 dict dict_init(size_t length);
-void dict_put(dict hash_table, TYPE_FOR_DICT key, TYPE_FOR_DICT value);
-TYPE_FOR_DICT dict_get(dict hash_table, TYPE_FOR_DICT key);
-void dict_delete(dict *hash_table, TYPE_FOR_DICT key);
+void dict_put(dict hash_table, dict_value_t key, dict_value_t value);
+dict_value_t dict_get(dict hash_table, dict_value_t key);
+void dict_delete(dict *hash_table, dict_value_t key);
 void dict_free(dict *hash_table);

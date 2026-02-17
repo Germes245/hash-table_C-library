@@ -1,3 +1,5 @@
+#include "../include/dict_couple.h"
+
 int hash_func(unsigned char* text){
     int hash_value = 0;
     while((*text) != 0){

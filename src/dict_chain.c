@@ -27,12 +27,13 @@ static unsigned char strcmp_(char first[], char second[]){ // если стро�
     return 0;
 }
 
-static int dict_chain_has_couple_with_key(dict_chain *chain, char key[]){ //если есть, то индекс структуры, иначе -1
-    for(size_t i = 0; i < chain->length; i++){
-        if(strcmp_(chain->array[i].key,key)) return i;
-    }
-    return -1;
-}
+#define elcmp strcmp_
+
+#elif TYPE_FOR_DICT == TYPE_INT
+
+#define elcmp(a, b) ((a) == (b))
+
+#endif
 
 static void dict_chain_shift_left(dict_chain *chain, size_t index){
     while(index < chain->length-1){
@@ -41,7 +42,12 @@ static void dict_chain_shift_left(dict_chain *chain, size_t index){
     }
 }
 
-#endif
+static int dict_chain_has_couple_with_key(dict_chain *chain, dict_value_t key){ //если есть, то индекс структуры, иначе -1
+    for(size_t i = 0; i < chain->length; i++){
+        if(elcmp(chain->array[i].key,key)) return i;
+    }
+    return -1;
+}
 
 dict_chain dict_chain_init(){
     dict_chain chain;
@@ -54,7 +60,9 @@ void dict_chain_put(dict_chain *chain, dict_value_t key, dict_value_t value){
     if(chain->length){
         int index;
         if((index = dict_chain_has_couple_with_key(chain, key)) != -1){
+            #if TYPE_FOR_DICT == TYPE_CHAR_P
             free(chain->array[index].value);
+            #endif
             create_and_copy(chain->array[index].value, value);
         }
         else{
@@ -77,18 +85,23 @@ dict_value_t dict_chain_get(dict_chain chain, dict_value_t key){
     return chain.array[index].value;
 }
 
-void dict_chain_delete(dict_chain *chain, dict_value_t key){
+unsigned char dict_chain_delete(dict_chain *chain, dict_value_t key){
     int index = dict_chain_has_couple_with_key(chain, key);
     if(index == -1) return 0;
+    #if TYPE_FOR_DICT == TYPE_CHAR_P
     dict_couple_free(&chain->array[index]);
+    #endif
     dict_chain_shift_left(chain, index);
     chain->array = realloc(chain->array, (--chain->length)*sizeof(dict_couple));
+    return 1;
 }
 
 void dict_chain_free(dict_chain *chain){
+    #if TYPE_FOR_DICT == TYPE_CHAR_P
     for(size_t i = 0; i < chain->length; i++){
         dict_couple_free(&chain->array[i]);
     }
+    #endif
     free(chain->array);
     chain->length = 0;
 }
