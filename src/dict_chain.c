@@ -1,7 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include "../include/dict_couple.h"
+
+#if TYPE_FOR_DICT == TYPE_CHAR_P
+    #define get_value_result dict_value_t
+#elif TYPE_FOR_DICT == TYPE_INT
+    typedef struct{
+        dict_value_t value;
+        uint8_t error;
+    } get_value_result;
+#endif
 
 #define print_dict_chain(chain) {\
     printf("length: %ld. elements: ", chain.length);\
@@ -79,10 +89,25 @@ void dict_chain_put(dict_chain *chain, dict_value_t key, dict_value_t value){
     }
 }
 
-dict_value_t dict_chain_get(dict_chain chain, dict_value_t key){
+get_value_result dict_chain_get(dict_chain chain, dict_value_t key){
     int index = dict_chain_has_couple_with_key(&chain, key);
-    if(index == -1) return 0;
-    return chain.array[index].value;
+    if(index == -1) {
+        #if TYPE_FOR_DICT == TYPE_CHAR_P
+            return 0;
+        #elif TYPE_FOR_DICT == TYPE_INT
+            get_value_result result;
+            result.error = 1; // значение не найдено
+            return result;
+        #endif
+    }
+    #if TYPE_FOR_DICT == TYPE_CHAR_P
+        return chain.array[index].value;
+    #elif TYPE_FOR_DICT == TYPE_INT
+        get_value_result result;
+        result.value = chain.array[index].value;
+        result.error = 0;
+        return result;
+    #endif
 }
 
 unsigned char dict_chain_delete(dict_chain *chain, dict_value_t key){
