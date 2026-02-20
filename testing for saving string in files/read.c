@@ -14,6 +14,7 @@
 }*/
 
 size_t contain(char array[], size_t bytes, char byte){
+    // ищет цифру в массиве. array -- массив, bytes -- размер массива в байтах, byte -- цифра, которую надо найти
     for(size_t i = 0; i < bytes; i++){
         if(array[i] == byte){
             return ++i; // если найдено значение, то индекс + 1
@@ -22,46 +23,70 @@ size_t contain(char array[], size_t bytes, char byte){
     return 0; // если не найдено, то ноль
 }
 
+typedef struct{
+    char *string;
+    size_t length;
+    size_t number_of_element;
+    char chars[6];
+} readBytesFromFileResult;
+
+#define chars_length 6
+
+readBytesFromFileResult read_bytes_from_file(FILE *file){
+    // читает файл и записывает строку до нулевого терминатора 
+    readBytesFromFileResult result;
+    size_t read = fread(result.chars, sizeof(char), sizeof(result.chars)/sizeof(char), file);
+    result.number_of_element = contain(result.chars, read, 0);
+
+    //чтение первый байтов текста
+    if(result.number_of_element == 0){
+        result.string = malloc(read); // выделение;
+        memcpy(result.string, result.chars, read);
+        result.length = read;
+    }
+    else{
+        result.string = malloc(result.number_of_element); // выделение;
+        memcpy(result.string, result.chars, result.number_of_element);
+        result.length = result.number_of_element;
+        goto adding_a_terminator;
+    }
+
+    while((read = fread(result.chars, sizeof(char), sizeof(result.chars)/sizeof(char), file)) != 0){
+        result.number_of_element = contain(result.chars, read, 0);
+        if(result.number_of_element == 0){
+            size_t new_length = result.length+read;
+            result.string = realloc(result.string, new_length); // выделение
+            memcpy(result.string+result.length, result.chars, read);
+            result.length = new_length;
+        }
+        else{
+            size_t new_length = result.length+result.number_of_element;
+            result.string = realloc(result.string, new_length); // выделение
+            memcpy(result.string+result.length, result.chars, read);
+            result.length = new_length;
+            break;
+        }
+    }
+
+    adding_a_terminator:
+
+    result.string = realloc(result.string, result.length);
+    result.string[result.length] = 0;
+    result.length++;
+
+    return result; // нужно будет сохранять указатель в отдельный массив указателей
+}
+
 int main() {
     FILE *file = fopen("test.bin", "rb");
     if (file == NULL) {
         perror("Ошибка открытия");
         return 1;
     }
-    char chars[6];
-    size_t read = fread(chars, sizeof(char), sizeof(chars)/sizeof(char), file);
-    size_t number_of_element = contain(chars, read, 0);
-    size_t length = read;
-    //printf("%d", number_of_element);
-    char *string;
-    if(number_of_element == 0){
-        string = malloc(read); // выделение;
-        memcpy(string, chars, read);
-        write(1, string, read);
-        //printf("ff");
-    }
-    else{
-        string = malloc(number_of_element); // выделение;
-        memcpy(string, chars, number_of_element);
-        write(1, string, number_of_element);
-    }
-    /*while((read = fread(chars, sizeof(char), sizeof(chars)/sizeof(char), file)) != 0){
-        //printf("%d\n", read);
-        for(uint8_t i = 0; i < read; i++){
-            printf("%d ", chars[i]);
-            //putchar(chars[i]);
-        }
-        //putchar('\n');
-        index = contain(chars, read, 0);
-        if(index == 0){
-            string = malloc(read); // выделение
-            memcpy(string, chars, read);
-            write(1, string, read);
-        }
-        else{
+    char **strings = malloc(2*sizeof(char*));
 
-        }
-    }*/
-    free(string);
+    readBytesFromFileResult result = read_bytes_from_file(file);
+    printf(result.string);
+
     return 0;
 }
