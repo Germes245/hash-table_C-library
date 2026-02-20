@@ -86,7 +86,14 @@ int main() {
     char **strings = malloc(2*sizeof(char*));
 
     readBytesFromFileResult result = read_bytes_from_file(file);
-    printf(result.string);
-
+    //printf("%s\n%s\n",result.string, result.chars);
+    //printf("%s. in end: %d\n",result.string, chars_length-result.number_of_element);
+    //write(1, result.chars, chars_length);
+    strings[0] = result.string;
+    if(chars_length-result.number_of_element==1){
+        
+        result = read_bytes_from_file(file);
+        printf("strings: %s, and %s", strings[0], result.string);
+    }
     return 0;
 }
