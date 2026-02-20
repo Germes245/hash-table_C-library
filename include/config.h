@@ -5,7 +5,7 @@
 #define TYPE_CHAR_P 2
 
 // Задаём желаемый тип числом
-#define TYPE_FOR_DICT TYPE_INT
+#define TYPE_FOR_DICT TYPE_CHAR_P
 
 #if TYPE_FOR_DICT == TYPE_INT
     typedef int dict_value_t;
