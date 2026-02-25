@@ -13,3 +13,14 @@ file(GLOB SOURCE_FILES "src/*.c")
 
 # Создаём разделяемую (динамическую) библиотеку
 add_library(hash_table SHARED ${SOURCE_FILES})
+target_include_directories(hash_table PRIVATE include)
+
+include(GNUInstallDirs)
+
+# Устанавливаем библиотеку и заголовки
+install(TARGETS hash_table
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hash_table)

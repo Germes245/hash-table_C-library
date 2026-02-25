@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "../include/dict_couple.h"
+#include "dict_couple.h"
 
 #if TYPE_FOR_DICT == TYPE_CHAR_P
     #define get_value_result dict_value_t

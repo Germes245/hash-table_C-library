@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stddef.h>
-#include "../include/dict_chain.h"
-#include "../include/config.h"
+#include "dict_chain.h"
+#include "config.h"
 
 #if TYPE_FOR_DICT == TYPE_CHAR_P
     #include "../include/hash.h"

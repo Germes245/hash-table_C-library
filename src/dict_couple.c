@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../include/dict_couple.h"
+#include "dict_couple.h"
 
 dict_couple dict_couple_init(dict_value_t key, dict_value_t value){
     dict_couple couple;

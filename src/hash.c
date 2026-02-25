@@ -1,4 +1,4 @@
-#include "../include/dict_couple.h"
+#include "dict_couple.h"
 
 int hash_func(unsigned char* text){
     int hash_value = 0;
