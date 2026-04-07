@@ -1,14 +1,8 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include "dict_chain.h"
-#include "config.h"
-
-#if TYPE_FOR_DICT == TYPE_CHAR_P
-    #include "../include/hash.h"
-    #define index_of_key_in_hash(key, length) hash_func(key)%length
-#elif TYPE_FOR_DICT == TYPE_INT
-    #define index_of_key_in_hash(key, length) key%length
-#endif
+#include "hash.h"
+#define index_of_key_in_hash(key, length) hash_func(key)%length
 
 typedef struct{
     dict_chain *array;
@@ -26,19 +20,19 @@ dict dict_init(size_t length){
     return hash_table;
 }
 
-void dict_put(dict hash_table, dict_value_t key, dict_value_t value){
-    uint index = index_of_key_in_hash(key, hash_table.length);
+void dict_put(dict hash_table, char* key, char* value){
+    size_t index = index_of_key_in_hash(key, hash_table.length);
     dict_chain_put(&hash_table.array[index], key, value);
     //exit(1);
 }
 
-dict_value_t dict_get(dict hash_table, dict_value_t key){
-    uint index = index_of_key_in_hash(key, hash_table.length);
+char* dict_get(dict hash_table, char* key){
+    size_t index = index_of_key_in_hash(key, hash_table.length);
     return dict_chain_get(hash_table.array[index], key);
 }
 
-void dict_delete(dict *hash_table, dict_value_t key){
-    uint index = index_of_key_in_hash(key, hash_table->length);
+void dict_delete(dict *hash_table, char* key){
+    size_t index = index_of_key_in_hash(key, hash_table->length);
     dict_chain_delete(&hash_table->array[index], key);
 }
 

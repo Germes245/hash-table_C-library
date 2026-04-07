@@ -4,15 +4,6 @@
 #include <stdint.h>
 #include "dict_couple.h"
 
-#if TYPE_FOR_DICT == TYPE_CHAR_P
-    #define get_value_result dict_value_t
-#elif TYPE_FOR_DICT == TYPE_INT
-    typedef struct{
-        dict_value_t value;
-        uint8_t error;
-    } get_value_result;
-#endif
-
 #define print_dict_chain(chain) {\
     printf("length: %ld. elements: ", chain.length);\
     for (size_t i = 0; i < chain.length; i++){\
@@ -25,8 +16,6 @@ typedef struct{
     size_t length;
 } dict_chain;
 
-#if TYPE_FOR_DICT == TYPE_CHAR_P
-
 static unsigned char strcmp_(char first[], char second[]){ // если строки равны, то 1, иначе 0
     while(*first != 0 || *second != 0){
         if(*first != *second) return 0;
@@ -37,14 +26,6 @@ static unsigned char strcmp_(char first[], char second[]){ // если стро�
     return 0;
 }
 
-#define elcmp strcmp_
-
-#elif TYPE_FOR_DICT == TYPE_INT
-
-#define elcmp(a, b) ((a) == (b))
-
-#endif
-
 static void dict_chain_shift_left(dict_chain *chain, size_t index){
     while(index < chain->length-1){
         chain->array[index] = chain->array[index + 1];
@@ -52,9 +33,9 @@ static void dict_chain_shift_left(dict_chain *chain, size_t index){
     }
 }
 
-static int dict_chain_has_couple_with_key(dict_chain *chain, dict_value_t key){ //если есть, то индекс структуры, иначе -1
+static int dict_chain_has_couple_with_key(dict_chain *chain, char* key){ //если есть, то индекс структуры, иначе -1
     for(size_t i = 0; i < chain->length; i++){
-        if(elcmp(chain->array[i].key,key)) return i;
+        if(strcmp_(chain->array[i].key,key)) return i;
     }
     return -1;
 }
@@ -66,7 +47,7 @@ dict_chain dict_chain_init(){
     return chain;
 }
 
-void dict_chain_put(dict_chain *chain, dict_value_t key, dict_value_t value){
+void dict_chain_put(dict_chain *chain, char* key, char* value){
     if(chain->length){
         int index;
         if((index = dict_chain_has_couple_with_key(chain, key)) != -1){
@@ -89,28 +70,15 @@ void dict_chain_put(dict_chain *chain, dict_value_t key, dict_value_t value){
     }
 }
 
-get_value_result dict_chain_get(dict_chain chain, dict_value_t key){
+char* dict_chain_get(dict_chain chain, char* key){
     int index = dict_chain_has_couple_with_key(&chain, key);
     if(index == -1) {
-        #if TYPE_FOR_DICT == TYPE_CHAR_P
-            return 0;
-        #elif TYPE_FOR_DICT == TYPE_INT
-            get_value_result result;
-            result.error = 1; // значение не найдено
-            return result;
-        #endif
+        return 0;
     }
-    #if TYPE_FOR_DICT == TYPE_CHAR_P
-        return chain.array[index].value;
-    #elif TYPE_FOR_DICT == TYPE_INT
-        get_value_result result;
-        result.value = chain.array[index].value;
-        result.error = 0;
-        return result;
-    #endif
+    return chain.array[index].value;
 }
 
-unsigned char dict_chain_delete(dict_chain *chain, dict_value_t key){
+unsigned char dict_chain_delete(dict_chain *chain, char* key){
     int index = dict_chain_has_couple_with_key(chain, key);
     if(index == -1) return 0;
     #if TYPE_FOR_DICT == TYPE_CHAR_P

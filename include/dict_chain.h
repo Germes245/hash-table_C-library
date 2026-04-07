@@ -1,4 +1,3 @@
-#include "config.h"
 #include <stddef.h>
 #include <stdint.h>
 
@@ -10,26 +9,12 @@
 }*/
 
 typedef struct{
-    dict_value_t key;
-    dict_value_t value;
-} dict_couple;
-
-typedef struct{
-    dict_couple *array;
+    void *array;
     size_t length;
 } dict_chain;
 
-#if TYPE_FOR_DICT == TYPE_CHAR_P
-    #define get_value_result dict_value_t
-#elif TYPE_FOR_DICT == TYPE_INT
-    typedef struct{
-        dict_value_t value;
-        uint8_t error;
-    } get_value_result;
-#endif
-
 dict_chain dict_chain_init();
-void dict_chain_put(dict_chain *chain, dict_value_t key, dict_value_t value);
-dict_value_t dict_chain_get(dict_chain chain, dict_value_t key);
-void dict_chain_delete(dict_chain *chain, dict_value_t key);
+void dict_chain_put(dict_chain *chain, char* key, char* value);
+char* dict_chain_get(dict_chain chain, char* key);
+void dict_chain_delete(dict_chain *chain, char* key);
 void dict_chain_free(dict_chain *chain);
