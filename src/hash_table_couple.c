@@ -1,21 +1,21 @@
 #include <stddef.h>
 #include <string.h>
 #include <stdlib.h>
-#include "dict_couple.h"
+#include "hash_table_couple.h"
 
-dict_couple dict_couple_init(char* key, char* value){
-    dict_couple couple;
+str_hash_table_couple str_hash_table_couple_init(char* key, char* value){
+    str_hash_table_couple couple;
     create_and_copy(couple.key, key);
     create_and_copy(couple.value, value);
     return couple;
 }
 
-void dict_couple_change_value(dict_couple couple, char* value){
+void str_hash_table_couple_change_value(str_hash_table_couple couple, char* value){
     free(couple.value);
     create_and_copy(couple.value, value);
 }
 
-void dict_couple_free(dict_couple *couple){
+void str_hash_table_couple_free(str_hash_table_couple *couple){
     free(couple->key);
     free(couple->value);
     couple->key = 0;

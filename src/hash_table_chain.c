@@ -2,9 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "dict_couple.h"
+#include "hash_table_couple.h"
 
-#define print_dict_chain(chain) {\
+#define print_str_hash_table_chain(chain) {\
     printf("length: %ld. elements: ", chain.length);\
     for (size_t i = 0; i < chain.length; i++){\
         printf("(%s, %s), ", chain.array[i].key, chain.array[i].value);\
@@ -12,9 +12,9 @@
 }
 
 typedef struct{
-    dict_couple *array;
+    str_hash_table_couple *array;
     size_t length;
-} dict_chain;
+} str_hash_table_chain;
 
 static unsigned char strcmp_(char first[], char second[]){ // если строки равны, то 1, иначе 0
     while(*first != 0 || *second != 0){
@@ -26,75 +26,73 @@ static unsigned char strcmp_(char first[], char second[]){ // если стро�
     return 0;
 }
 
-static void dict_chain_shift_left(dict_chain *chain, size_t index){
+static void str_hash_table_chain_shift_left(str_hash_table_chain *chain, size_t index){
     while(index < chain->length-1){
         chain->array[index] = chain->array[index + 1];
         index++;
     }
 }
 
-static int dict_chain_has_couple_with_key(dict_chain *chain, char* key){ //если есть, то индекс структуры, иначе -1
+static int str_hash_table_chain_has_couple_with_key(str_hash_table_chain *chain, char* key){ //если есть, то индекс структуры, иначе -1
     for(size_t i = 0; i < chain->length; i++){
         if(strcmp_(chain->array[i].key,key)) return i;
     }
     return -1;
 }
 
-dict_chain dict_chain_init(){
-    dict_chain chain;
+str_hash_table_chain str_hash_table_chain_init(){
+    str_hash_table_chain chain;
     chain.array = 0;
     chain.length = 0;
     return chain;
 }
 
-void dict_chain_put(dict_chain *chain, char* key, char* value){
+void str_hash_table_chain_put(str_hash_table_chain *chain, char* key, char* value){
     if(chain->length){
         int index;
-        if((index = dict_chain_has_couple_with_key(chain, key)) != -1){
-            #if TYPE_FOR_DICT == TYPE_CHAR_P
+        if((index = str_hash_table_chain_has_couple_with_key(chain, key)) != -1){
             free(chain->array[index].value);
-            #endif
             create_and_copy(chain->array[index].value, value);
         }
         else{
-            chain->array = realloc(chain->array, (++chain->length)*sizeof(dict_chain));
+            chain->array = realloc(chain->array, (++chain->length)*sizeof(str_hash_table_chain));
             create_and_copy(chain->array[chain->length-1].key, key);
             create_and_copy(chain->array[chain->length-1].value, value);
         }
     }
     else{
-        chain->array = malloc(sizeof(dict_couple));
+        chain->array = malloc(sizeof(str_hash_table_couple));
         chain->length = 1;
         create_and_copy(chain->array[0].key, key);
         create_and_copy(chain->array[0].value, value);
     }
 }
 
-char* dict_chain_get(dict_chain chain, char* key){
-    int index = dict_chain_has_couple_with_key(&chain, key);
+char* str_hash_table_chain_get(str_hash_table_chain chain, char* key){
+    int index = str_hash_table_chain_has_couple_with_key(&chain, key);
     if(index == -1) {
         return 0;
     }
     return chain.array[index].value;
 }
 
-unsigned char dict_chain_delete(dict_chain *chain, char* key){
-    int index = dict_chain_has_couple_with_key(chain, key);
+unsigned char str_hash_table_chain_delete(str_hash_table_chain *chain, char* key){
+    int index = str_hash_table_chain_has_couple_with_key(chain, key);
     if(index == -1) return 0;
-    #if TYPE_FOR_DICT == TYPE_CHAR_P
-    dict_couple_free(&chain->array[index]);
-    #endif
-    dict_chain_shift_left(chain, index);
-    chain->array = realloc(chain->array, (--chain->length)*sizeof(dict_couple));
+    str_hash_table_couple_free(&chain->array[index]);
+    if (chain->length != 1) {
+        str_hash_table_chain_shift_left(chain, index);
+        chain->array = realloc(chain->array, (--chain->length)*sizeof(str_hash_table_couple));
+    }
+    free(chain->array);
+    chain->array=0;
     return 1;
 }
 
-void dict_chain_free(dict_chain *chain){
-    #if TYPE_FOR_DICT == TYPE_CHAR_P
+void str_hash_table_chain_free(str_hash_table_chain *chain){
     for(size_t i = 0; i < chain->length; i++){
-        dict_couple_free(&chain->array[i]);
+        str_hash_table_couple_free(&chain->array[i]);
     }
-    #endif
     free(chain->array);
     chain->length = 0;
 }

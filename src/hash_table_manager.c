@@ -1,46 +1,72 @@
 #include <stdlib.h>
 #include <stddef.h>
-#include "dict_chain.h"
+#include "hash_table_chain.h"
+#include "hash_table_couple.h"
 #include "hash.h"
 #define index_of_key_in_hash(key, length) hash_func(key)%length
 
 typedef struct{
-    dict_chain *array;
+    str_hash_table_chain *array;
     size_t length;
-} dict;
+} str_hash_table;
 
-dict dict_init(size_t length){
-    dict hash_table;
+str_hash_table str_hash_table_init(size_t length){
+    str_hash_table hash_table;
     hash_table.length = length;
-    size_t size = length*sizeof(dict_chain);
+    size_t size = length*sizeof(str_hash_table_chain);
     hash_table.array = malloc(size);
     for(size_t i = 0; i < length; i++){
-        hash_table.array[i] = dict_chain_init();
+        hash_table.array[i] = str_hash_table_chain_init();
     }
     return hash_table;
 }
 
-void dict_put(dict hash_table, char* key, char* value){
+void str_hash_table_put(str_hash_table hash_table, char* key, char* value){
     size_t index = index_of_key_in_hash(key, hash_table.length);
-    dict_chain_put(&hash_table.array[index], key, value);
+    str_hash_table_chain_put(&hash_table.array[index], key, value);
     //exit(1);
 }
 
-char* dict_get(dict hash_table, char* key){
+char* str_hash_table_get(str_hash_table hash_table, char* key){
     size_t index = index_of_key_in_hash(key, hash_table.length);
-    return dict_chain_get(hash_table.array[index], key);
+    return str_hash_table_chain_get(hash_table.array[index], key);
 }
 
-void dict_delete(dict *hash_table, char* key){
+void str_hash_table_delete(str_hash_table *hash_table, char* key){
     size_t index = index_of_key_in_hash(key, hash_table->length);
-    dict_chain_delete(&hash_table->array[index], key);
+    str_hash_table_chain_delete(&hash_table->array[index], key);
 }
 
-void dict_free(dict *hash_table){
+void str_hash_table_free(str_hash_table *hash_table){
     for(size_t i = 0; i < hash_table->length; i++){
-        dict_chain_free(&hash_table->array[i]);
+        str_hash_table_chain_free(&hash_table->array[i]);
     }
     free(hash_table->array);
     hash_table->array = 0;
     hash_table->length = 0;
+}
+
+typedef struct{
+    char** array;
+    size_t length;
+} array_of_chars_pointers;
+
+array_of_chars_pointers str_hash_table__get_pointers_of_strings(str_hash_table hash_table){
+    array_of_chars_pointers result;
+    result.length = 0;
+    for(size_t i = 0; i < hash_table.length; i++){
+        result.length += hash_table.array[i].length * 2;
+    }
+    result.array = malloc(result.length * sizeof(char*));
+    size_t index = 0;
+    for(size_t i = 0; i < hash_table.length; i++){
+        size_t score_of_coulpes = hash_table.array[i].length;
+        str_hash_table_couple* couple = hash_table.array[i].array;
+        for (size_t j = 0; j < hash_table.array[i].length; j++) {
+            result.array[index] = couple[j].key; //hash_table.array[i].array[j].key;
+            result.array[(++index)] = couple[j].value;//hash_table.array[i].array[j].value;
+            ++index;
+        }
+    }
+    return result;
 }
