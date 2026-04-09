@@ -1,0 +1,18 @@
+\doxysection{hash\+\_\+table\+\_\+couple.\+h}
+\hypertarget{hash__table__couple_8h_source}{}\label{hash__table__couple_8h_source}\index{include/hash\_table\_couple.h@{include/hash\_table\_couple.h}}
+\mbox{\hyperlink{hash__table__couple_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structstr__hash__table__couple_a236fc459f49772a5a98dac37afa0ddc7}{value}};}
+\DoxyCodeLine{00003\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structstr__hash__table__couple_a6de18de0a68892d7f5852f4cb4292ac4}{key}};}
+\DoxyCodeLine{00004\ \}\ \mbox{\hyperlink{structstr__hash__table__couple}{str\_hash\_table\_couple}};}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \mbox{\hyperlink{structstr__hash__table__couple}{str\_hash\_table\_couple}}\ \mbox{\hyperlink{hash__table__couple_8h_a476941247f7f2ca7def2e2763f460194}{str\_hash\_table\_couple\_init}}(\textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{char}*\ value);}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash__table__couple_8h_a3e43d714044d3696f1071488df507447}{str\_hash\_table\_couple\_change\_value}}(\mbox{\hyperlink{structstr__hash__table__couple}{str\_hash\_table\_couple}}\ couple,\ \textcolor{keywordtype}{char}*\ value);}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash__table__couple_8h_a19e2178e14cb9eb1ca6b4511d0d67001}{str\_hash\_table\_couple\_free}}(\mbox{\hyperlink{structstr__hash__table__couple}{str\_hash\_table\_couple}}\ *couple);}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ create\_and\_copy(destination,\ source)\ destination\ =\ malloc(strlen(source)+1);\(\backslash\)}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{strcpy(destination,\ source)}}
+
+\end{DoxyCode}

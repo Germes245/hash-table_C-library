@@ -1,0 +1,65 @@
+\doxysection{include/hash\+\_\+table\+\_\+couple.h File Reference}
+\hypertarget{hash__table__couple_8h}{}\label{hash__table__couple_8h}\index{include/hash\_table\_couple.h@{include/hash\_table\_couple.h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hash__table__couple_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstr__hash__table__couple}{str\+\_\+hash\+\_\+table\+\_\+couple}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{hash__table__couple_8h_ae84142168395a116d1b1b08bd00531aa}{create\+\_\+and\+\_\+copy}}(destination,  source)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structstr__hash__table__couple}{str\+\_\+hash\+\_\+table\+\_\+couple}} \mbox{\hyperlink{hash__table__couple_8h_a476941247f7f2ca7def2e2763f460194}{str\+\_\+hash\+\_\+table\+\_\+couple\+\_\+init}} (char \texorpdfstring{$\ast$}{*}key, char \texorpdfstring{$\ast$}{*}value)
+\item 
+void \mbox{\hyperlink{hash__table__couple_8h_a3e43d714044d3696f1071488df507447}{str\+\_\+hash\+\_\+table\+\_\+couple\+\_\+change\+\_\+value}} (\mbox{\hyperlink{structstr__hash__table__couple}{str\+\_\+hash\+\_\+table\+\_\+couple}} couple, char \texorpdfstring{$\ast$}{*}value)
+\item 
+void \mbox{\hyperlink{hash__table__couple_8h_a19e2178e14cb9eb1ca6b4511d0d67001}{str\+\_\+hash\+\_\+table\+\_\+couple\+\_\+free}} (\mbox{\hyperlink{structstr__hash__table__couple}{str\+\_\+hash\+\_\+table\+\_\+couple}} \texorpdfstring{$\ast$}{*}couple)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{hash__table__couple_8h_ae84142168395a116d1b1b08bd00531aa}\label{hash__table__couple_8h_ae84142168395a116d1b1b08bd00531aa} 
+\index{hash\_table\_couple.h@{hash\_table\_couple.h}!create\_and\_copy@{create\_and\_copy}}
+\index{create\_and\_copy@{create\_and\_copy}!hash\_table\_couple.h@{hash\_table\_couple.h}}
+\doxysubsubsection{\texorpdfstring{create\_and\_copy}{create\_and\_copy}}
+{\footnotesize\ttfamily \#define create\+\_\+and\+\_\+copy(\begin{DoxyParamCaption}\item[{}]{destination,  }\item[{}]{source }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{destination\ =\ malloc(strlen(source)+1);\(\backslash\)}
+\DoxyCodeLine{strcpy(destination,\ source)}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{hash__table__couple_8h_a3e43d714044d3696f1071488df507447}\label{hash__table__couple_8h_a3e43d714044d3696f1071488df507447} 
+\index{hash\_table\_couple.h@{hash\_table\_couple.h}!str\_hash\_table\_couple\_change\_value@{str\_hash\_table\_couple\_change\_value}}
+\index{str\_hash\_table\_couple\_change\_value@{str\_hash\_table\_couple\_change\_value}!hash\_table\_couple.h@{hash\_table\_couple.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_couple\_change\_value()}{str\_hash\_table\_couple\_change\_value()}}
+{\footnotesize\ttfamily void str\+\_\+hash\+\_\+table\+\_\+couple\+\_\+change\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table__couple}{str\+\_\+hash\+\_\+table\+\_\+couple}}}]{couple,  }\item[{char \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__couple_8h_a19e2178e14cb9eb1ca6b4511d0d67001}\label{hash__table__couple_8h_a19e2178e14cb9eb1ca6b4511d0d67001} 
+\index{hash\_table\_couple.h@{hash\_table\_couple.h}!str\_hash\_table\_couple\_free@{str\_hash\_table\_couple\_free}}
+\index{str\_hash\_table\_couple\_free@{str\_hash\_table\_couple\_free}!hash\_table\_couple.h@{hash\_table\_couple.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_couple\_free()}{str\_hash\_table\_couple\_free()}}
+{\footnotesize\ttfamily void str\+\_\+hash\+\_\+table\+\_\+couple\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table__couple}{str\+\_\+hash\+\_\+table\+\_\+couple}} \texorpdfstring{$\ast$}{*}}]{couple }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__couple_8h_a476941247f7f2ca7def2e2763f460194}\label{hash__table__couple_8h_a476941247f7f2ca7def2e2763f460194} 
+\index{hash\_table\_couple.h@{hash\_table\_couple.h}!str\_hash\_table\_couple\_init@{str\_hash\_table\_couple\_init}}
+\index{str\_hash\_table\_couple\_init@{str\_hash\_table\_couple\_init}!hash\_table\_couple.h@{hash\_table\_couple.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_couple\_init()}{str\_hash\_table\_couple\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstr__hash__table__couple}{str\+\_\+hash\+\_\+table\+\_\+couple}} str\+\_\+hash\+\_\+table\+\_\+couple\+\_\+init (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{char \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
+

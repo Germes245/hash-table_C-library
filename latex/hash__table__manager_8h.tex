@@ -1,0 +1,105 @@
+\doxysection{include/hash\+\_\+table\+\_\+manager.h File Reference}
+\hypertarget{hash__table__manager_8h}{}\label{hash__table__manager_8h}\index{include/hash\_table\_manager.h@{include/hash\_table\_manager.h}}
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for hash\+\_\+table\+\_\+manager.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{hash__table__manager_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}}
+\item 
+struct \mbox{\hyperlink{structarray__of__chars__pointers}{array\+\_\+of\+\_\+chars\+\_\+pointers}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}} \mbox{\hyperlink{hash__table__manager_8h_a461462c5736a60b8ff6c177a1e8d1093}{str\+\_\+hash\+\_\+table\+\_\+init}} (size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em инициализирует хэш-\/таблицу \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hash__table__manager_8h_ad4115744f2abc7f760599659da526c42}{str\+\_\+hash\+\_\+table\+\_\+put}} (\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}} hash\+\_\+table, char \texorpdfstring{$\ast$}{*}key, char \texorpdfstring{$\ast$}{*}value)
+\begin{DoxyCompactList}\small\item\em добавляет пару ключ\+:значение в хэш-\/таблицу \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{hash__table__manager_8h_aa767971788f1fbb096f194be97aafa24}{str\+\_\+hash\+\_\+table\+\_\+get}} (\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}} hash\+\_\+table, char \texorpdfstring{$\ast$}{*}key)
+\item 
+void \mbox{\hyperlink{hash__table__manager_8h_ad5a1397d197ddb8e3b20fb3f9f29b2f6}{str\+\_\+hash\+\_\+table\+\_\+delete}} (\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}} \texorpdfstring{$\ast$}{*}hash\+\_\+table, char \texorpdfstring{$\ast$}{*}key)
+\item 
+void \mbox{\hyperlink{hash__table__manager_8h_a25145659de8587886f133c995e168718}{str\+\_\+hash\+\_\+table\+\_\+free}} (\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}} \texorpdfstring{$\ast$}{*}hash\+\_\+table)
+\item 
+\mbox{\hyperlink{structarray__of__chars__pointers}{array\+\_\+of\+\_\+chars\+\_\+pointers}} \mbox{\hyperlink{hash__table__manager_8h_afc2802ff4dda3b3b04e64ab6466ddd6e}{str\+\_\+hash\+\_\+table\+\_\+\+\_\+get\+\_\+pointers\+\_\+of\+\_\+strings}} (\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}} hash\+\_\+table)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{hash__table__manager_8h_afc2802ff4dda3b3b04e64ab6466ddd6e}\label{hash__table__manager_8h_afc2802ff4dda3b3b04e64ab6466ddd6e} 
+\index{hash\_table\_manager.h@{hash\_table\_manager.h}!str\_hash\_table\_\_get\_pointers\_of\_strings@{str\_hash\_table\_\_get\_pointers\_of\_strings}}
+\index{str\_hash\_table\_\_get\_pointers\_of\_strings@{str\_hash\_table\_\_get\_pointers\_of\_strings}!hash\_table\_manager.h@{hash\_table\_manager.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_\_get\_pointers\_of\_strings()}{str\_hash\_table\_\_get\_pointers\_of\_strings()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structarray__of__chars__pointers}{array\+\_\+of\+\_\+chars\+\_\+pointers}} str\+\_\+hash\+\_\+table\+\_\+\+\_\+get\+\_\+pointers\+\_\+of\+\_\+strings (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}}}]{hash\+\_\+table }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__manager_8h_ad5a1397d197ddb8e3b20fb3f9f29b2f6}\label{hash__table__manager_8h_ad5a1397d197ddb8e3b20fb3f9f29b2f6} 
+\index{hash\_table\_manager.h@{hash\_table\_manager.h}!str\_hash\_table\_delete@{str\_hash\_table\_delete}}
+\index{str\_hash\_table\_delete@{str\_hash\_table\_delete}!hash\_table\_manager.h@{hash\_table\_manager.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_delete()}{str\_hash\_table\_delete()}}
+{\footnotesize\ttfamily void str\+\_\+hash\+\_\+table\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{hash\+\_\+table,  }\item[{char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__manager_8h_a25145659de8587886f133c995e168718}\label{hash__table__manager_8h_a25145659de8587886f133c995e168718} 
+\index{hash\_table\_manager.h@{hash\_table\_manager.h}!str\_hash\_table\_free@{str\_hash\_table\_free}}
+\index{str\_hash\_table\_free@{str\_hash\_table\_free}!hash\_table\_manager.h@{hash\_table\_manager.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_free()}{str\_hash\_table\_free()}}
+{\footnotesize\ttfamily void str\+\_\+hash\+\_\+table\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{hash\+\_\+table }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__manager_8h_aa767971788f1fbb096f194be97aafa24}\label{hash__table__manager_8h_aa767971788f1fbb096f194be97aafa24} 
+\index{hash\_table\_manager.h@{hash\_table\_manager.h}!str\_hash\_table\_get@{str\_hash\_table\_get}}
+\index{str\_hash\_table\_get@{str\_hash\_table\_get}!hash\_table\_manager.h@{hash\_table\_manager.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_get()}{str\_hash\_table\_get()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} str\+\_\+hash\+\_\+table\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}}}]{hash\+\_\+table,  }\item[{char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__manager_8h_a461462c5736a60b8ff6c177a1e8d1093}\label{hash__table__manager_8h_a461462c5736a60b8ff6c177a1e8d1093} 
+\index{hash\_table\_manager.h@{hash\_table\_manager.h}!str\_hash\_table\_init@{str\_hash\_table\_init}}
+\index{str\_hash\_table\_init@{str\_hash\_table\_init}!hash\_table\_manager.h@{hash\_table\_manager.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_init()}{str\_hash\_table\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}} str\+\_\+hash\+\_\+table\+\_\+init (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+инициализирует хэш-\/таблицу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & -- количество бакетов в будущей хэш-\/таблице \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+новая хэш-\/таблица 
+\end{DoxyReturn}
+\Hypertarget{hash__table__manager_8h_ad4115744f2abc7f760599659da526c42}\label{hash__table__manager_8h_ad4115744f2abc7f760599659da526c42} 
+\index{hash\_table\_manager.h@{hash\_table\_manager.h}!str\_hash\_table\_put@{str\_hash\_table\_put}}
+\index{str\_hash\_table\_put@{str\_hash\_table\_put}!hash\_table\_manager.h@{hash\_table\_manager.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_put()}{str\_hash\_table\_put()}}
+{\footnotesize\ttfamily void str\+\_\+hash\+\_\+table\+\_\+put (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table}{str\+\_\+hash\+\_\+table}}}]{hash\+\_\+table,  }\item[{char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{char \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
+
+
+
+добавляет пару ключ\+:значение в хэш-\/таблицу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hash\+\_\+table} & -- хэш-\/таблица, в которую будет добавляться пара \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ничего не возвращает
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em length} & -- количество бакетов в будущей хэш-\/таблице \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+новая хэш-\/таблица 
+\end{DoxyReturn}

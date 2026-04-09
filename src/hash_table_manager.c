@@ -10,6 +10,11 @@ typedef struct{
     size_t length;
 } str_hash_table;
 
+/**
+ * @brief инициализирует хэш-таблицу
+ * @param length -- количество бакетов в будущей хэш-таблице
+ * @return новая хэш-таблица
+*/
 str_hash_table str_hash_table_init(size_t length){
     str_hash_table hash_table;
     hash_table.length = length;
@@ -21,6 +26,11 @@ str_hash_table str_hash_table_init(size_t length){
     return hash_table;
 }
 
+/**
+ * @brief добавляет пару ключ:значение в хэш-таблицу
+ * @param length -- количество бакетов в будущей хэш-таблице
+ * @return новая хэш-таблица
+*/
 void str_hash_table_put(str_hash_table hash_table, char* key, char* value){
     size_t index = index_of_key_in_hash(key, hash_table.length);
     str_hash_table_chain_put(&hash_table.array[index], key, value);

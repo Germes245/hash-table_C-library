@@ -1,0 +1,71 @@
+\doxysection{include/hash\+\_\+table\+\_\+chain.h File Reference}
+\hypertarget{hash__table__chain_8h}{}\label{hash__table__chain_8h}\index{include/hash\_table\_chain.h@{include/hash\_table\_chain.h}}
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for hash\+\_\+table\+\_\+chain.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{hash__table__chain_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{hash__table__chain_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}} \mbox{\hyperlink{hash__table__chain_8h_aa242c64b4bf5f0f8958fe75118f960cb}{str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+init}} ()
+\item 
+void \mbox{\hyperlink{hash__table__chain_8h_a1c23460d73e41cb7f6af8769d1a32463}{str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+put}} (\mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}} \texorpdfstring{$\ast$}{*}chain, char \texorpdfstring{$\ast$}{*}key, char \texorpdfstring{$\ast$}{*}value)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{hash__table__chain_8h_ae0cbd3e6d3ab63effc1bcb3aa6f03f27}{str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+get}} (\mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}} chain, char \texorpdfstring{$\ast$}{*}key)
+\item 
+void \mbox{\hyperlink{hash__table__chain_8h_a49cb027abf3d80b3f75298e308fd15ac}{str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+delete}} (\mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}} \texorpdfstring{$\ast$}{*}chain, char \texorpdfstring{$\ast$}{*}key)
+\item 
+void \mbox{\hyperlink{hash__table__chain_8h_ac1205b0ca96d9ff10de6ee7036bd48e6}{str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+free}} (\mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}} \texorpdfstring{$\ast$}{*}chain)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{hash__table__chain_8h_a49cb027abf3d80b3f75298e308fd15ac}\label{hash__table__chain_8h_a49cb027abf3d80b3f75298e308fd15ac} 
+\index{hash\_table\_chain.h@{hash\_table\_chain.h}!str\_hash\_table\_chain\_delete@{str\_hash\_table\_chain\_delete}}
+\index{str\_hash\_table\_chain\_delete@{str\_hash\_table\_chain\_delete}!hash\_table\_chain.h@{hash\_table\_chain.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_chain\_delete()}{str\_hash\_table\_chain\_delete()}}
+{\footnotesize\ttfamily void str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}} \texorpdfstring{$\ast$}{*}}]{chain,  }\item[{char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__chain_8h_ac1205b0ca96d9ff10de6ee7036bd48e6}\label{hash__table__chain_8h_ac1205b0ca96d9ff10de6ee7036bd48e6} 
+\index{hash\_table\_chain.h@{hash\_table\_chain.h}!str\_hash\_table\_chain\_free@{str\_hash\_table\_chain\_free}}
+\index{str\_hash\_table\_chain\_free@{str\_hash\_table\_chain\_free}!hash\_table\_chain.h@{hash\_table\_chain.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_chain\_free()}{str\_hash\_table\_chain\_free()}}
+{\footnotesize\ttfamily void str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}} \texorpdfstring{$\ast$}{*}}]{chain }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__chain_8h_ae0cbd3e6d3ab63effc1bcb3aa6f03f27}\label{hash__table__chain_8h_ae0cbd3e6d3ab63effc1bcb3aa6f03f27} 
+\index{hash\_table\_chain.h@{hash\_table\_chain.h}!str\_hash\_table\_chain\_get@{str\_hash\_table\_chain\_get}}
+\index{str\_hash\_table\_chain\_get@{str\_hash\_table\_chain\_get}!hash\_table\_chain.h@{hash\_table\_chain.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_chain\_get()}{str\_hash\_table\_chain\_get()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}}}]{chain,  }\item[{char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__chain_8h_aa242c64b4bf5f0f8958fe75118f960cb}\label{hash__table__chain_8h_aa242c64b4bf5f0f8958fe75118f960cb} 
+\index{hash\_table\_chain.h@{hash\_table\_chain.h}!str\_hash\_table\_chain\_init@{str\_hash\_table\_chain\_init}}
+\index{str\_hash\_table\_chain\_init@{str\_hash\_table\_chain\_init}!hash\_table\_chain.h@{hash\_table\_chain.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_chain\_init()}{str\_hash\_table\_chain\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}} str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{hash__table__chain_8h_a1c23460d73e41cb7f6af8769d1a32463}\label{hash__table__chain_8h_a1c23460d73e41cb7f6af8769d1a32463} 
+\index{hash\_table\_chain.h@{hash\_table\_chain.h}!str\_hash\_table\_chain\_put@{str\_hash\_table\_chain\_put}}
+\index{str\_hash\_table\_chain\_put@{str\_hash\_table\_chain\_put}!hash\_table\_chain.h@{hash\_table\_chain.h}}
+\doxysubsubsection{\texorpdfstring{str\_hash\_table\_chain\_put()}{str\_hash\_table\_chain\_put()}}
+{\footnotesize\ttfamily void str\+\_\+hash\+\_\+table\+\_\+chain\+\_\+put (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstr__hash__table__chain}{str\+\_\+hash\+\_\+table\+\_\+chain}} \texorpdfstring{$\ast$}{*}}]{chain,  }\item[{char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{char \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
+
