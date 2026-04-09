@@ -1,5 +1,5 @@
 <map id="include/hash_table_manager.h" name="include/hash_table_manager.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="19,5,163,45"/>
+<area shape="rect" id="Node000001" title="объявление главных методов хэш&#45;таблицы" alt="" coords="19,5,163,45"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,93,80,119"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,47,59,83,55,80,77,44"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="105,93,175,119"/>
