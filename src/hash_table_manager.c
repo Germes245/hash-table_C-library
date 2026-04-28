@@ -80,3 +80,5 @@ array_of_chars_pointers str_hash_table__get_pointers_of_strings(str_hash_table h
     }
     return result;
 }
+
+void str_hash_table_put_

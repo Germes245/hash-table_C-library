@@ -62,9 +62,17 @@ void str_hash_table_delete(str_hash_table *hash_table, char* key);
 void str_hash_table_free(str_hash_table *hash_table);
 //char** str_hash_table__get_pointers_of_strings(str_hash_table hash_table);
 
+/**
+ * @brief структура, используемая функцией str_hash_table__get_pointers_of_strings для возвращения массива указателей
+*/
 typedef struct{
-    char** array;
-    size_t length;
+    char** array; /**< массив содержащий указатели на строки*/
+    size_t length; /**< длина масссива*/
 } array_of_chars_pointers;
 
+/**
+ * @brief возвращает указатели на все строки, которые есть в хэш-таблице, где строки идут в порядке ключ:значение
+ * @param hash_table -- хэш-таблица, из которой будут получены строки
+ * @return возвращает структуру array_of_chars_pointers
+*/
 array_of_chars_pointers str_hash_table__get_pointers_of_strings(str_hash_table hash_table);

@@ -4,6 +4,8 @@ CMakeCache.txt
 libhash_table.a
 main_program
 a.out
+html
+latex
 
 # Сборки CMake
 build/
