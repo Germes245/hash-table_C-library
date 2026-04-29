@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <stdint.h>
+#include <hash_table_couple.h>
 
 /*#define print_str_hash_table_chain(chain) {\
     printf("length: %ld. elements: ", chain.length);\
@@ -9,7 +10,7 @@
 }*/
 
 typedef struct{
-    void *array;
+    str_hash_table_couple *array;
     size_t length;
 } str_hash_table_chain;
 

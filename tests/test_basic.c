@@ -15,9 +15,9 @@ int main() {
     printf("вставка\n");
     
     // Поиск
-    char* val = str_hash_table_get(manager, "key3");
+    char* val = str_hash_table_get(manager, "key2");
     printf("get\n");
-    printf("%d\n", val);
+    printf("%s\n", val);
     
     // Удаление
     str_hash_table_delete(&manager, "key1");

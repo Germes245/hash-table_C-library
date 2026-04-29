@@ -34,12 +34,12 @@ static void str_hash_table_chain_shift_left(str_hash_table_chain *chain, size_t 
     }
 }
 
-static size_t str_hash_table_chain_has_couple_with_key(str_hash_table_chain *chain, char* key){ //если есть, то индекс структуры, иначе -1
+static size_t str_hash_table_chain_has_couple_with_key(str_hash_table_chain *chain, char* key){ //если есть, то индекс структуры, иначе 0
     for(size_t i = 0; i < chain->length; i++){
         //printf("keyva: %s\n", chain->array[i].key);
-        if(strcmp_(chain->array[i].key,key)) return i;
+        if(strcmp(chain->array[i].key,key)) return i+1;
     }
-    return -1;
+    return 0;
 }
 
 str_hash_table_chain str_hash_table_chain_init(){
@@ -61,6 +61,7 @@ void str_hash_table_chain_put(str_hash_table_chain *chain, char* key, char* valu
             create_and_copy(chain->array[chain->length-1].key, key);
             create_and_copy(chain->array[chain->length-1].value, value);
         }
+        chain->length++;
     }
     else{
         chain->array = malloc(sizeof(str_hash_table_couple));
@@ -72,19 +73,19 @@ void str_hash_table_chain_put(str_hash_table_chain *chain, char* key, char* valu
 
 char* str_hash_table_chain_get(str_hash_table_chain chain, char* key){
     size_t index = str_hash_table_chain_has_couple_with_key(&chain, key);
-    //printf("index: %d\n", index);
-    if(index == -1) {
+    if(index == 0) {
         return 0;
     }
-    return chain.array[index].value;
+    return chain.array[index-1].value;
 }
 
 unsigned char str_hash_table_chain_delete(str_hash_table_chain *chain, char* key){
     int index = str_hash_table_chain_has_couple_with_key(chain, key);
-    if(index == -1) return 0;
-    str_hash_table_couple_free(&chain->array[index]);
+    if(index == 0) return 0;
+    printf("%s\n", chain->array[index-1].key);
+    str_hash_table_couple_free(&chain->array[index-1]);
     if (chain->length != 1) {
-        str_hash_table_chain_shift_left(chain, index);
+        str_hash_table_chain_shift_left(chain, index-1);
         chain->array = realloc(chain->array, (--chain->length)*sizeof(str_hash_table_couple));
     }
     free(chain->array);
