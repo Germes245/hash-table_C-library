@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stddef.h>
+#include <stdio.h>
 #include "hash_table_chain.h"
 #include "hash_table_couple.h"
 #include "hash.h"
@@ -44,7 +45,9 @@ char* str_hash_table_get(str_hash_table hash_table, char* key){
 
 void str_hash_table_delete(str_hash_table *hash_table, char* key){
     size_t index = index_of_key_in_hash(key, hash_table->length);
+    //printf("shya1\n");
     str_hash_table_chain_delete(&hash_table->array[index], key);
+    //printf("shya2\n");
 }
 
 void str_hash_table_free(str_hash_table *hash_table){
@@ -81,4 +84,4 @@ array_of_chars_pointers str_hash_table__get_pointers_of_strings(str_hash_table h
     return result;
 }
 
-void str_hash_table_put_
+//void str_hash_table_put_

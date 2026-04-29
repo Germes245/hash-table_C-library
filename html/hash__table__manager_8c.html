@@ -115,6 +115,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstr__hash__table.html">str_hash_table</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarray__of__chars__pointers.html">array_of_chars_pointers</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">структура, используемая функцией str_hash_table__get_pointers_of_strings для возвращения массива указателей  <a href="structarray__of__chars__pointers.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -131,12 +132,16 @@ Functions</h2></td></tr>
 <tr class="memdesc:ad4115744f2abc7f760599659da526c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">добавляет пару ключ:значение в хэш-таблицу  <br /></td></tr>
 <tr class="separator:ad4115744f2abc7f760599659da526c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa767971788f1fbb096f194be97aafa24" id="r_aa767971788f1fbb096f194be97aafa24"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table__manager_8c.html#aa767971788f1fbb096f194be97aafa24">str_hash_table_get</a> (<a class="el" href="structstr__hash__table.html">str_hash_table</a> hash_table, char *key)</td></tr>
+<tr class="memdesc:aa767971788f1fbb096f194be97aafa24"><td class="mdescLeft">&#160;</td><td class="mdescRight">получает значение по ключу в хэш-таблице  <br /></td></tr>
 <tr class="separator:aa767971788f1fbb096f194be97aafa24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5a1397d197ddb8e3b20fb3f9f29b2f6" id="r_ad5a1397d197ddb8e3b20fb3f9f29b2f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table__manager_8c.html#ad5a1397d197ddb8e3b20fb3f9f29b2f6">str_hash_table_delete</a> (<a class="el" href="structstr__hash__table.html">str_hash_table</a> *hash_table, char *key)</td></tr>
+<tr class="memdesc:ad5a1397d197ddb8e3b20fb3f9f29b2f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">удаляет пару по ключу в хэш-таблице  <br /></td></tr>
 <tr class="separator:ad5a1397d197ddb8e3b20fb3f9f29b2f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25145659de8587886f133c995e168718" id="r_a25145659de8587886f133c995e168718"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table__manager_8c.html#a25145659de8587886f133c995e168718">str_hash_table_free</a> (<a class="el" href="structstr__hash__table.html">str_hash_table</a> *hash_table)</td></tr>
+<tr class="memdesc:a25145659de8587886f133c995e168718"><td class="mdescLeft">&#160;</td><td class="mdescRight">удаляет всё что есть в хэш-таблице неоходимо использовать, когда хэш-таблица больше не нужна.  <br /></td></tr>
 <tr class="separator:a25145659de8587886f133c995e168718"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc2802ff4dda3b3b04e64ab6466ddd6e" id="r_afc2802ff4dda3b3b04e64ab6466ddd6e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structarray__of__chars__pointers.html">array_of_chars_pointers</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table__manager_8c.html#afc2802ff4dda3b3b04e64ab6466ddd6e">str_hash_table__get_pointers_of_strings</a> (<a class="el" href="structstr__hash__table.html">str_hash_table</a> hash_table)</td></tr>
+<tr class="memdesc:afc2802ff4dda3b3b04e64ab6466ddd6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">возвращает указатели на все строки, которые есть в хэш-таблице, где строки идут в порядке ключ:значение  <br /></td></tr>
 <tr class="separator:afc2802ff4dda3b3b04e64ab6466ddd6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -187,6 +192,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>возвращает указатели на все строки, которые есть в хэш-таблице, где строки идут в порядке ключ:значение </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hash_table</td><td>&ndash; хэш-таблица, из которой будут получены строки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>возвращает структуру <a class="el" href="structarray__of__chars__pointers.html" title="структура, используемая функцией str_hash_table__get_pointers_of_strings для возвращения массива указ...">array_of_chars_pointers</a> </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="hash__table__manager_8c_source.html#l00064">64</a> of file <a class="el" href="hash__table__manager_8c_source.html">hash_table_manager.c</a>.</p>
 
 </div>
@@ -217,6 +231,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>удаляет пару по ключу в хэш-таблице </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hash_table</td><td>&ndash; хэш-таблица, в которой будет удаление пары, key &ndash; ключ, пара от которого будет удалена </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ничего не возвращает </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="hash__table__manager_8c_source.html#l00045">45</a> of file <a class="el" href="hash__table__manager_8c_source.html">hash_table_manager.c</a>.</p>
 
 </div>
@@ -236,6 +259,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>удаляет всё что есть в хэш-таблице неоходимо использовать, когда хэш-таблица больше не нужна. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hash_table</td><td>&ndash; хэш-таблица, в которой будет всё удалено </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ничего не возвращает </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="hash__table__manager_8c_source.html#l00050">50</a> of file <a class="el" href="hash__table__manager_8c_source.html">hash_table_manager.c</a>.</p>
 
@@ -266,6 +298,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>получает значение по ключу в хэш-таблице </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hash_table</td><td>&ndash; хэш-таблица, в которой будет поиск значения, key &ndash; ключ, значение от которого функция ищет </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>возвращает указатель на строку из хэш-таблицы </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="hash__table__manager_8c_source.html#l00040">40</a> of file <a class="el" href="hash__table__manager_8c_source.html">hash_table_manager.c</a>.</p>
 

@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -33,8 +34,9 @@ static void str_hash_table_chain_shift_left(str_hash_table_chain *chain, size_t 
     }
 }
 
-static int str_hash_table_chain_has_couple_with_key(str_hash_table_chain *chain, char* key){ //если есть, то индекс структуры, иначе -1
+static size_t str_hash_table_chain_has_couple_with_key(str_hash_table_chain *chain, char* key){ //если есть, то индекс структуры, иначе -1
     for(size_t i = 0; i < chain->length; i++){
+        //printf("keyva: %s\n", chain->array[i].key);
         if(strcmp_(chain->array[i].key,key)) return i;
     }
     return -1;
@@ -69,7 +71,8 @@ void str_hash_table_chain_put(str_hash_table_chain *chain, char* key, char* valu
 }
 
 char* str_hash_table_chain_get(str_hash_table_chain chain, char* key){
-    int index = str_hash_table_chain_has_couple_with_key(&chain, key);
+    size_t index = str_hash_table_chain_has_couple_with_key(&chain, key);
+    //printf("index: %d\n", index);
     if(index == -1) {
         return 0;
     }
