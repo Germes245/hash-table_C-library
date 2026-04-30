@@ -17,16 +17,6 @@ typedef struct{
     size_t length;
 } str_hash_table_chain;
 
-static unsigned char strcmp_(char first[], char second[]){ // если строки равны, то 1, иначе 0
-    while(*first != 0 || *second != 0){
-        if(*first != *second) return 0;
-        first++;
-        second++;
-    }
-    if(*first == *second) return 1;
-    return 0;
-}
-
 static void str_hash_table_chain_shift_left(str_hash_table_chain *chain, size_t index){
     while(index < chain->length-1){
         chain->array[index] = chain->array[index + 1];
@@ -79,10 +69,14 @@ char* str_hash_table_chain_get(str_hash_table_chain chain, char* key){
     return chain.array[index-1].value;
 }
 
+#include <assert.h>
+
 unsigned char str_hash_table_chain_delete(str_hash_table_chain *chain, char* key){
-    int index = str_hash_table_chain_has_couple_with_key(chain, key);
+    size_t index = str_hash_table_chain_has_couple_with_key(chain, key);
+    //printf("%d\n", index);
+    assert(index==0);
     if(index == 0) return 0;
-    printf("%s\n", chain->array[index-1].key);
+    //printf("%s\n", chain->array[index-1].key);
     str_hash_table_couple_free(&chain->array[index-1]);
     if (chain->length != 1) {
         str_hash_table_chain_shift_left(chain, index-1);
