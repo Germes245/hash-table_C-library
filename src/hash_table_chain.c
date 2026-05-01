@@ -26,8 +26,7 @@ static void str_hash_table_chain_shift_left(str_hash_table_chain *chain, size_t 
 
 static size_t str_hash_table_chain_has_couple_with_key(str_hash_table_chain *chain, char* key){ //если есть, то индекс структуры, иначе 0
     for(size_t i = 0; i < chain->length; i++){
-        //printf("keyva: %s\n", chain->array[i].key);
-        if(strcmp(chain->array[i].key,key)) return i+1;
+        if(strcmp(chain->array[i].key,key) == 0) return i+1;
     }
     return 0;
 }
