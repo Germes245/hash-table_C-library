@@ -46,10 +46,9 @@ void str_hash_table_chain_put(str_hash_table_chain *chain, char* key, char* valu
         if(index != 0){ // если в цепочке есть пара, где есть ключ, который равен в новой паре
             free(chain->array[index].value);
             create_and_copy(chain->array[index].value, value);
-            chain->length++;
         }
         else{ // если в цепочке нет пара, где есть ключ, который равен в новой паре
-            chain->array = realloc(chain->array, (++chain->length)*sizeof(str_hash_table_chain));
+            chain->array = realloc(chain->array, (++chain->length)*sizeof(str_hash_table_couple));
             create_and_copy(chain->array[chain->length-1].key, key);
             create_and_copy(chain->array[chain->length-1].value, value);
         }

@@ -17,6 +17,13 @@ target_include_directories(hash_table PRIVATE include)
 
 include(GNUInstallDirs)
 
+find_library(DYNAMIC_ARRAY_LIB dynamic_array)
+if(NOT DYNAMIC_ARRAY_LIB)
+    message(FATAL_ERROR "dynamic_array library not found")
+endif()
+
+target_link_libraries(hash_table PRIVATE ${DYNAMIC_ARRAY_LIB})
+
 # Устанавливаем библиотеку и заголовки
 install(TARGETS hash_table
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

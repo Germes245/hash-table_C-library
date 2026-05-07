@@ -12,21 +12,18 @@ int main() {
     // Вставка
     str_hash_table_put(manager, "key1", "value1");
     str_hash_table_put(manager, "key2", "value2");
-    printf("вставка\n");
     
     // Поиск
     char* val = str_hash_table_get(manager, "key2");
-    printf("get\n");
-    printf("%s\n", val);
+    printf("get %s\n", val);
     
     // Удаление
     str_hash_table_delete(&manager, "key1");
     printf("delete\n");
-    //printf("shya3\n");
     val = str_hash_table_get(manager, "key1");
-    printf("get\n");
+    printf("get %d\n", val);
+    //printf("%d\n", val);
     //printf("shya4\n");
-    printf("%d\n", val);
     //printf("shya\n");
     
     str_hash_table_free(&manager);
