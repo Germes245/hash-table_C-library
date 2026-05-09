@@ -1,9 +1,0 @@
-<map id="include/hash_table_couple.h" name="include/hash_table_couple.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="215,5,359,45"/>
-<area shape="rect" id="Node000002" href="$hash__table__chain_8c.html" title=" " alt="" coords="5,93,175,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,53,120,96,118,91,226,48"/>
-<area shape="rect" id="Node000003" href="$hash__table__couple_8c.html" title=" " alt="" coords="199,93,376,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="290,59,290,93,285,93,285,59"/>
-<area shape="rect" id="Node000004" href="$hash__table__manager_8c.html" title=" " alt="" coords="400,93,591,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="351,48,466,91,464,96,349,53"/>
-</map>
