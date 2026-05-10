@@ -23,7 +23,10 @@ void str_hash_table_chain_put(str_hash_table_chain *chain, char* key, char* valu
     dyn_array_append(chain, array);
 }
 
-char* str_hash_table_chain_get(str_hash_table_chain *chain, char* key){
+char* str_hash_table_chain_get_pointer(str_hash_table_chain chain, char* key){
+    for(size_t i = 0; i < chain.length; i+=2){
+        if(strcmp(key, chain.data[i]) == 0) return chain.data[i];
+    }
 }
 
 int main(){
