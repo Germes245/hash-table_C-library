@@ -27,8 +27,8 @@ void str_hash_table_chain_put(str_hash_table_chain *chain, char* key, char* valu
     size_t index = find_index_of_key(*chain, key, &has_string);
     if (has_string) {
         size_t length_for_string = strlen(value)+1;
-        array->data[index+1] = realloc(array->data[index+1], length_for_string);
-        memcpy(array->data[index+1], value, length_for_string);
+        chain->data[index+1] = realloc(chain->data[index+1], length_for_string);
+        memcpy(chain->data[index+1], value, length_for_string);
     }
     else{
         size_t length_for_string = strlen(key)+1;
@@ -47,7 +47,7 @@ char* str_hash_table_chain_get_pointer(str_hash_table_chain chain, char* key){
     uint8_t has_string;
     size_t index = find_index_of_key(chain, key, &has_string);
     if (has_string) {
-        return chain.data + index;
+        return chain.data[index+1];
     }
     return 0;
 }
