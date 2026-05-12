@@ -1,5 +1,6 @@
-//void   
+//void
 #include <dyn_array.h>
+#include <dyn_string.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -52,10 +53,23 @@ char* str_hash_table_chain_get_pointer(str_hash_table_chain chain, char* key){
     return 0;
 }
 
+void str_hash_table_chain_delete(str_hash_table_chain chain, char* key){
+    uint8_t has_string;
+    size_t index = find_index_of_key(chain, key, &has_string);
+    if (has_string) {
+        free(chain.data[index]);
+        free(chain.data[index+1]);
+        uint8_t has_element;
+        dyn_array_delete(&chain, index, &has_element);
+        dyn_array_delete(&chain, index, &has_element);
+    }
+}
+
 int main(){
     str_hash_table_chain chain = str_hash_table_chain_init();
     str_hash_table_chain_put(&chain, "shya", "sha");
     str_hash_table_chain_put(&chain, "shya", "shaka");
+    str_hash_table_chain_delete(chain, "shya");
     printf("%s\n", str_hash_table_chain_get_pointer(chain, "shya"));
     return 0;
 }
