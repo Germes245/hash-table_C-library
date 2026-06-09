@@ -8,24 +8,24 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef dyn_array_size_t str_hash_table_chain;
+typedef dyn_array_size_t hash_table;
 
-str_hash_table_chain str_hash_table_chain_init(size_t length){
+hash_table hash_table_init(size_t length){
     length*=2;
-    str_hash_table_chain array = dyn_array_size_t_init(length);
+    hash_table array = dyn_array_size_t_init(length);
     for(size_t i = 0; i < length; i++){
         array.data[i]=0;
     }
     return array;    
 }
 
-
+void hash_table_put(hash_table *)
 
 int main(){
-    str_hash_table_chain chain = str_hash_table_chain_init(5);
-    //str_hash_table_chain_put(&chain, 2, 6);
-    //str_hash_table_chain_put(&chain, 2, 10);
-    //str_hash_table_chain_delete(chain, "shya");
-    //printf("%s\n", str_hash_table_chain_get_pointer(chain, "shya"));
+    hash_table chain = hash_table_init(5);
+    //hash_table_put(&chain, 2, 6);
+    //hash_table_put(&chain, 2, 10);
+    //hash_table_delete(chain, "shya");
+    //printf("%s\n", hash_table_get_pointer(chain, "shya"));
     return 0;
 }
