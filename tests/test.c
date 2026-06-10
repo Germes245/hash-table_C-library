@@ -7,6 +7,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 typedef dyn_array_size_t hash_table_chain;
 
@@ -35,12 +36,14 @@ size_t hash_table_chain_get_number(hash_table_chain chain, uint8_t *error, size_
     return 0;
 }
 
+size_t hash_table_chain_delete(hash_table_chain chain, size_t key);
+сутра сердца
+
 int main(){
     hash_table_chain chain = hash_table_chain_init(5);
     hash_table_chain_put(&chain, 2, 6);
-    //hash_table_chain_put(&chain, 2, 10);
-    //hash_table_chain_delete(chain, "shya");
     uint8_t error;
-    printf("%d\n", hash_table_chain_get_number(chain, &error, 2));
+    size_t number = hash_table_chain_get_number(chain, &error, 2);
+    assert(error == 0 && number == 6);
     return 0;
 }
