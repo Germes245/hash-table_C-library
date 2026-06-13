@@ -9,12 +9,11 @@
 
 typedef dyn_array_size_t hash_table_chain;
 
-hash_table_chain hash_table_chain_init(size_t length){
-    length*=2;
-    hash_table_chain array = dyn_array_size_t_init(length);
-    for(size_t i = 0; i < length; i++){
+hash_table_chain hash_table_chain_init(){
+    hash_table_chain array = dyn_array_size_t_init(0);
+    /*for(size_t i = 0; i < length; i++){
         array.data[i]=0;
-    }
+    }*/
     return array;    
 }
 
@@ -22,13 +21,6 @@ void hash_table_chain_put(hash_table_chain *chain, size_t key, size_t value){
     dyn_array_size_t_append(chain, key);
     dyn_array_size_t_append(chain, value);
 }
-
-/*static size_t find_index_of_key(hash_table_chain chain, uint8_t *error, size_t key){
-    for(size_t i = 0; i < chain.length; i+=2){
-        if(chain.data[i] == key){
-            *error = 0;
-            return i;
-}*/
 
 size_t hash_table_chain_get_number(hash_table_chain chain, uint8_t *error, size_t key){
     for(size_t i = 0; i < chain.length; i+=2){
@@ -42,7 +34,7 @@ size_t hash_table_chain_get_number(hash_table_chain chain, uint8_t *error, size_
 }
 
 size_t hash_table_chain_delete(hash_table_chain chain, uint8_t *error, size_t key){
-    printf("hash_table_chain_delete\n");
+    printf("\nhash_table_chain_delete\n");
     for(size_t i = 0; i < chain.length; i+=2){
         printf("index = %d\n", i);
         if(chain.data[i] == key){
@@ -50,6 +42,11 @@ size_t hash_table_chain_delete(hash_table_chain chain, uint8_t *error, size_t ke
             *error = 0;
             printf("%d\n", *error);
             dyn_array_size_t_delete(&chain, i, error);
+            printf("chain: ");
+            for(size_t i = 0; i < chain.length; i++){
+                printf("%d ", chain.data[i]);
+            }
+            putchar('\n');
             printf("%d\n", *error);
             printf("escape\n");
             return dyn_array_size_t_delete(&chain, i, error);
@@ -57,13 +54,13 @@ size_t hash_table_chain_delete(hash_table_chain chain, uint8_t *error, size_t ke
     }
     *error = 1;
     printf("%d\n", *error);
-    printf("escape\n");
+    printf("escape\n\n");
     return 0;
 }
 //сутра сердца
 
 int main(){
-    hash_table_chain chain = hash_table_chain_init(5);
+    hash_table_chain chain = hash_table_chain_init();
     hash_table_chain_put(&chain, 2, 6);
     uint8_t error;
     size_t number = hash_table_chain_get_number(chain, &error, 2);
