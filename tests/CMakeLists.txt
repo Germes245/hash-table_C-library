@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 project(test)
+set(CMAKE_BUILD_TYPE Debug)
 
 # Пути к заголовкам (каждая библиотека имеет свою директорию)
 set(DYN_ARRAY_INT_INCLUDE "/usr/local/include/dynamic_array_int")
